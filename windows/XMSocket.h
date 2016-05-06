@@ -27,6 +27,7 @@ public:
 	static void startup();
 	static void cleanup();
 	static void setaddr(sockaddr_in & addr, unsigned short port, const char *ip = NULL);
+	bool setbloking(bool block);
 };
 
 #endif 

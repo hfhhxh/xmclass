@@ -122,3 +122,13 @@ int XMSocket::recv(sockaddr_in &client, char * buf, int len){
 void XMSocket::close(){
     ::close(this->fd);
 }
+
+bool XMSocket::setbloking(bool block){
+	int flags = fcntl(fd, F_GETFL);
+	if(block){
+		flags &= ~O_NONBLOCK;
+	}else{
+    flags |= O_NONBLOCK;
+	}
+	return fcntl(fd, F_SETFL, flags);
+}

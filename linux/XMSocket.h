@@ -3,6 +3,7 @@
 
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/ioctl.h>
 #include <arpa/inet.h>
 #include <string.h>
 #include <unistd.h>
@@ -10,24 +11,25 @@
 
 class XMSocket {
 private:
-    bool isServer;
-    bool isTCP;
-    int fd;
-    sockaddr_in addr;
+  bool isServer;
+  bool isTCP;
+  int fd;
+  sockaddr_in addr;
 public:
-    XMSocket(void);
+  XMSocket(void);
 //    XMSocket(int fd);
-    virtual ~XMSocket();
+  virtual ~XMSocket();
 
-    bool createServer(unsigned short port, bool isTCP = true);
-    bool createClient(unsigned short port, const char *ip, bool isTCP = true);
-    bool accept(XMSocket & client);
-    bool connect();
-    int send(const char* buf, int len);
-    int recv(char *buf, int len);
-    int send(sockaddr_in & client, const char * buf, int len);
-    int recv(sockaddr_in & client, char * buf, int len);
-    void close();
+  bool createServer(unsigned short port, bool isTCP = true);
+  bool createClient(unsigned short port, const char *ip, bool isTCP = true);
+  bool accept(XMSocket & client);
+  bool connect();
+  int send(const char* buf, int len);
+  int recv(char *buf, int len);
+  int send(sockaddr_in & client, const char * buf, int len);
+  int recv(sockaddr_in & client, char * buf, int len);
+  void close();
+	bool setbloking(bool block);
 //    int fd();
 //    bool create();
 //    bool bind(short port);

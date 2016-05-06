@@ -142,3 +142,8 @@ void XMSocket::setaddr(sockaddr_in & addr, unsigned short port, const char * ip)
 		addr.sin_addr.S_un.S_addr = inet_addr(ip);
 	}
 }
+
+bool XMSocket::setbloking(bool block){
+	unsigned long ul = (block ? 0 : 1);
+	return 0 == ::ioctlsocket(this->sock, FIONBIO, (unsigned long *)&ul);
+}
