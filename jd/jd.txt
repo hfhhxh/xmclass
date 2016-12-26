@@ -1,0 +1,106 @@
+/home/xiumu/redis/src/redis-server /data/redis/1/redis.conf
+/home/xiumu/redis/src/redis-server /data/redis/2/redis.conf
+/home/xiumu/redis/src/redis-server /data/redis/3/redis.conf
+./redis-trib.rb create 127.0.0.1:7001 127.0.0.1:7002 127.0.0.1:7003
+./redis-cli -h -p
+port 7001
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 5000
+dir /data/redis/1/
+save 600 60
+dbfilename dump.rdb
+appendonly yes
+appendfilename appendonly.aof
+protected-mode no
+
+from rediscluster import StrictRedisCluster
+startup_nodes = [{"host": "127.0.0.1", "port": "7001"},{"host": "127.0.0.1", "port": "7002"},{"host": "127.0.0.1", "port": "7003"}]
+rc = StrictRedisCluster(startup_nodes=startup_nodes, decode_responses=True)
+rc.set("foo", "bar")
+rc.get("foo")
+
+from pymongo import MongoClient
+client = MongoClient(host='localhost', port=8001)
+
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(html, 'lxml')
+
+
+./mongod --dbpath /data/mongodb/0/ --logpath /data/mongodb/0/mongod.log --port 8000 --configsvr
+./mongos --logpath /data/mongodb/1/mongos.log --port 8001 --configdb 127.0.0.1:8000
+./mongod --dbpath /data/mongodb/2/ --logpath /data/mongodb/2/mongod.log --port 8002
+./mongod --dbpath /data/mongodb/3/ --logpath /data/mongodb/3/mongod.log --port 8003
+./mongod --dbpath /data/mongodb/4/ --logpath /data/mongodb/4/mongod.log --port 8004
+./mongo --host arg --port arg -u arg -p arg
+
+mongod --configsvr --replSet configReplSet --port <port> --dbpath <path>
+mongos --configdb configReplSet/<cfgsvr1:port1>,<cfgsvr2:port2>,<cfgsvr3:port3>
+./mongo --port 8001
+mongo --host <hostname of machine running mongos> --port <port mongos listens on>
+sh.addShard()
+addShard
+sh.addShard( "rs1/mongodb0.example.net:27017" )
+sh.addShard( "mongodb0.example.net:27017" )
+
+sh.enableSharding("<database>")
+db.runCommand( { enableSharding: <database> } )
+db.runCommand( { listshards : 1 } )
+
+
+mongos --configdb configReplSet/<cfgsvr1:port1>,<cfgsvr2:port2>,<cfgsvr3:port3>
+
+
+
+mongod --configsvr --dbpath /data/mongodbtest/config/data --port 21000 --logpath /data/mongodbtest/config/log/config.log --fork
+mongos  --configdb 192.168.0.136:21000,192.168.0.137:21000,192.168.0.138:21000  --port 20000   --logpath  /data/mongodbtest/mongos/log/mongos.log --fork
+mongod --shardsvr --replSet shard1 --port 22001 --dbpath /data/mongodbtest/shard1/data  --logpath /data/mongodbtest/shard1/log/shard1.log --fork --nojournal  --oplogSize 10
+
+svn/cac/server/cos/cvm/ccvm	/var/cos/cvm
+svn/cac/server/cos/cvm/cvm	/var/www/cos/cvm
+svn/cac/server/cos/service/cloudvm	/var/www/cos/service/cloudvm
+svn/cac/server/cos/ui				/var/www/cos/ui
+
+BeautifulSoup(markup, "lxml")
+BeautifulSoup(markup, "lxml-xml") BeautifulSoup(markup, "xml")
+
+
+http://sclub.jd.com/productpage/p-__skuid__-s-0-t-3-p-0.html?callback=fetchJSON_comment98vv__commentversion__
+http://club.jd.com/productpage/p-__skuid__-s-0-t-3-p-0.html?callback=fetchJSON_comment98vv__commentversion__
+http://club.jd.com/productpage/p-__skuid__-s-0-t-5-p-0.html?callback=fetchJSON_comment98vv__commentversion__
+http://sclub.jd.com/productpage/p-__skuid__-s-0-t-5-p-0.html?callback=fetchJSON_comment98vv__commentversion__
+
+http://club.jd.com/comment/getSkuProductPageComments.action?productId=1856588&score=0&sortType=5&page=0&pageSize=10&callback=fetchJSON_comment98vv140069
+http://club.jd.com/discussion/getSkuProductPageImageCommentList.action?productId=1856588&callback=jQuery3952942&page=1&pageSize=10&_=1468639762374
+
+http://club.jd.com/clubservice/newconsulation-1856581-1.html?callback=fetchJSON_Consult
+http://sclub.jd.com/productpage/p-1856581-s-0-t-5-p-0.html?callback=fetchJSON_comment98vv126853
+http://sclub.jd.com/productpage/p-1856581-s-3-t-5-p-0.html?callback=fetchJSON_comment98vv126853
+http://sclub.jd.com/productpage/p-1856581-s-2-t-5-p-0.html?callback=fetchJSON_comment98vv126853
+http://sclub.jd.com/productpage/p-1856581-s-1-t-5-p-0.html?callback=fetchJSON_comment98vv126853
+http://club.jd.com/discussion/getProductPageImageCommentList.action?productId=1856581&callback=jQuery6636898&page=1&pageSize=10&_=1468641638325
+http://club.jd.com/discussion/getProductPageImageCommentList.action?productId=1856581&callback=jQuery865080&page=2&pageSize=10&_=1468641638502
+
+http://club.jd.com/comment/getSkuProductPageComments.action?productId=1856581&score=0&sortType=5&page=0&pageSize=10&callback=fetchJSON_comment98vv126853
+
+http://club.jd.com/discussion/getProductPageImageCommentList.action?productId=1856581&callback=jQuery6636898&page=1&pageSize=10&_=1468641638325
+http://club.jd.com/discussion/getProductPageImageCommentList.action?productId=1856581&callback=jQuery865080&page=2&pageSize=10&_=1468641638502
+http://club.jd.com/discussion/getSkuProductPageImageCommentList.action?productId=1856581&callback=jQuery72623&page=2&pageSize=10&_=1468641751091
+http://club.jd.com/discussion/getSkuProductPageImageCommentList.action?productId=1856581&callback=jQuery9003717&page=1&pageSize=10&_=1468641750877
+
+http://club.jd.com/comment/getSkuProductPageComments.action?productId=1856581&score=0&sortType=5&page=0&pageSize=10&callback=fetchJSON_comment98vv126853
+http://club.jd.com/comment/getSkuProductPageComments.action?productId=1856581&score=3&sortType=5&page=0&pageSize=10&callback=fetchJSON_comment98vv126853
+http://club.jd.com/comment/getSkuProductPageComments.action?productId=1856581&score=2&sortType=5&page=0&pageSize=10&callback=fetchJSON_comment98vv126853
+http://club.jd.com/comment/getSkuProductPageComments.action?productId=1856581&score=1&sortType=5&page=0&pageSize=10&callback=fetchJSON_comment98vv126853
+
+http://club.jd.com/discussion/getSkuProductPageImageCommentList.action?productId=1856581&callback=jQuery1821683&page=2&pageSize=10&_=1468641894513
+http://club.jd.com/discussion/getSkuProductPageImageCommentList.action?productId=1856581&callback=jQuery2068446&page=1&pageSize=10&_=1468641894302
+
+http://club.jd.com/discussion/getSkuProductPageImageCommentList.action?productId=1856581&callback=jQuery7213275&page=1&pageSize=10&_=1468642046859
+http://club.jd.com/discussion/getSkuProductPageImageCommentList.action?productId=1856581&callback=jQuery2068446&page=1&pageSize=10&_=1468641894302
+
+
+5587 745
+real    80m0.771s
+user    27m10.224s
+sys     0m12.592s
