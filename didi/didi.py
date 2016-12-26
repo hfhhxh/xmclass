@@ -19,9 +19,9 @@ def getHtml(url) :
 		return None
 
 if __name__ == '__main__' :
-	file = open('danche.csv', 'w')
+	file = open('didi.csv', 'w')
 	writer = csv.writer(file)
-	url = 'http://news.baidu.com/ns?word=%E5%85%B1%E4%BA%AB%E5%8D%95%E8%BD%A6&pn=_pn_&cl=2&ct=1&tn=news&rn=20&ie=utf-8&bt=0&et=0'
+	url = 'http://news.baidu.com/ns?word=%E6%BB%B4%E6%BB%B4&pn=_pn_&cl=2&ct=1&tn=news&rn=20&ie=utf-8&bt=0&et=0'
 	for pn in range(0, 38) :
 		html = getHtml(url.replace('_pn_', str(pn*20)))
 		soup = BeautifulSoup(html, 'lxml')
